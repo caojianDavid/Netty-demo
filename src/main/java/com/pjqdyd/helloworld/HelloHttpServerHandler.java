@@ -17,9 +17,29 @@ import java.net.URI;
 
 public class HelloHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("handlerAdded");
+        super.handlerAdded(ctx);
+    }
+
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel registered");
+        super.channelRegistered(ctx);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel active");
+        super.channelActive(ctx);
+    }
+
+
     //接收读取客户端发送的请求, 并响应
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
+
         if(msg instanceof HttpRequest){
             HttpRequest httpRequest = (HttpRequest) msg;
             URI uri = new URI(httpRequest.uri());
@@ -27,7 +47,7 @@ public class HelloHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
                 System.out.println("网页请求图标");
                 return;
             }
-
+            System.out.println("channel read 0");
             //定义响应的内容
             ByteBuf content = Unpooled.copiedBuffer("Hello World!", CharsetUtil.UTF_8);
             //响应体
@@ -39,6 +59,20 @@ public class HelloHttpServerHandler extends SimpleChannelInboundHandler<HttpObje
 
             //发送响应
             ctx.writeAndFlush(response);
+            ctx.channel().close();
         }
+    }
+
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel in active");
+        super.channelInactive(ctx);
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channel un registered");
+        super.channelUnregistered(ctx);
     }
 }
