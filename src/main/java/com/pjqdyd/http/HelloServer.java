@@ -1,4 +1,4 @@
-package com.pjqdyd.helloworld;
+package com.pjqdyd.http;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -7,7 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**   
- * @Description:  [测试netty服务, 运行此类, 访问localhost:8899]
+ * @Description:  [测试netty的http服务端, 运行此类, 访问localhost:8899]
  * @Author:       pjqdyd
  * @Version:      [v1.0.0]
  */

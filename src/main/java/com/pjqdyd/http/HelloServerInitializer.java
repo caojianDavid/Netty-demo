@@ -1,4 +1,4 @@
-package com.pjqdyd.helloworld;
+package com.pjqdyd.http;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
