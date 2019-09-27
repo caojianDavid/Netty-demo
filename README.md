@@ -10,5 +10,5 @@
       ├─http        netty简单实现http连接服务端
       ├─socket      netty实现socket服务端和客户端
       ├─chat        netty实现多连接聊天
-      └─
+      └─ping        netty实现心跳机制
  ```
