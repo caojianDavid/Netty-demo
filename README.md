@@ -2,8 +2,6 @@
 
 #### 项目采用Gradle构建.
 
-#### Netty依赖版本4.1.39.Final.
-
 #### 项目结构:
  ```
   ├─src/main/java/com/pjqdyd
@@ -13,3 +11,9 @@
       ├─ping        netty实现心跳检测机制
       └─springboot  springboot整合netty
  ```
+
+
+#### 依赖版本:
+  Netty       4.1.39.Final.
+  
+  SpringBoot  2.1.8.RELEASE
