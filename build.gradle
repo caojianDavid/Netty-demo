@@ -9,9 +9,9 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 //编译JAVA文件时采用UTF-8
-//tasks.withType(JavaCompile) {
-//    options.encoding = "UTF-8"
-//}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 
 repositories {
     mavenCentral()
@@ -20,7 +20,8 @@ repositories {
 dependencies {
     //compile group: 'io.netty', name: 'netty-all', version: '4.1.39.Final'
     compile(
-            'io.netty:netty-all:4.1.39.Final'
+            'io.netty:netty-all:4.1.39.Final',
+            'org.springframework.boot:spring-boot-starter:2.1.8.RELEASE'
     )
 }
 
