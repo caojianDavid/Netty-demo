@@ -10,6 +10,7 @@
       ├─socket      netty实现socket服务端和客户端
       ├─chat        netty实现多客户连接聊天
       ├─ping        netty实现心跳检测机制
+      ├─websocket   netty实现websocket连接
       └─springboot  springboot整合netty
  ```
 

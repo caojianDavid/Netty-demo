@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websocket客户端</title>
+</head>
+<body>
+
+<form onsubmit="return false">
+    <textarea name="message" style="width: 400px; height: 200px"></textarea>
+    <input type="button" value="发送消息" onclick="sendMessage(this.form.message.value)">
+
+    <h3>服务器响应:</h3>
+    <textarea id="responseText" style="width: 400px; height: 300px"></textarea>
+    <input type="button" value="清空内容" onclick="cleanMessage()">
+</form>
+
+<script type="text/javascript">
+    var socket;
+    if (window.WebSocket){
+        socket = new WebSocket("ws://localhost:8899/ws"); //建立连接
+        socket.onmessage = function (event) {
+            document.getElementById("responseText").value = event.data
+        }
+        socket.onopen = function (event) {
+            alert("连接建立!")
+        }
+        socket.onclose = function (event) {
+            alert("连接断开!")
+        }
+    }else {
+        alert('您的浏览器不支持Websocket!')
+    }
+
+    function sendMessage(message) { //发送消息
+        if (!window.WebSocket){
+            return;
+        }
+        if (socket.readyState == WebSocket.OPEN){
+            socket.send(message);
+        }else {
+            alert("连接未开启!")
+        }
+    }
+
+    function cleanMessage() { //清空内容
+        document.getElementById("responseText").value = '';
+    }
+</script>
+
+</body>
+</html>
